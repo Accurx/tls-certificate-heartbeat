@@ -32,5 +32,5 @@ helm upgrade -n cronjobs [RELEASE_NAME] tls-certificate-heartbeat
 | Parameter                          | Description                                                                                                                       | Default                                                 |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
 | schedule | cron formatted schedule, of how frequently to run the heartbeat & validated the certificate expiry | `*/15 * * * *` |
-| namespaces.<namespace>.certificates | List of each certificate to check and in which cluster namespace these reside. | ``` - secretName: <secret name on the cluster>        heartBeatUrl: <external HTTP url to ping>``` |
+| namespaces.\<namespace\>.certificates | List of each certificate to check and in which cluster namespace these reside. | ``` - secretName: <secret name on the cluster>        heartBeatUrl: <external HTTP url to ping>``` |
 
