@@ -1,0 +1,20 @@
+name: tls-certificate-heartbeat
+
+role:
+  apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+
+schedule: "*/15 * * * *"  # every 15 minutes
+
+expiryThresholdSeconds: 604800  # 7 days
+
+# object to contain info on which cluster certificates to check, with following format
+# namespaces:
+#   <namespace>:
+#     certificates:
+#       - secretName: <secret name on the cluster>
+#         heartBeatUrl: <external HTTP url to ping for heartbeat information>
+#       - secretName: accurx-certificate
+#         heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/1234
+namespaces: []

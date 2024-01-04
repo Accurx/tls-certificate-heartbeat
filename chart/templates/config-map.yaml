@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: internal-certificate-heartbeat
+data:
+{{ (.Files.Glob "internal-certificate-heartbeat.sh").AsConfig | indent 2 }}
