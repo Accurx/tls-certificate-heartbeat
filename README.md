@@ -51,3 +51,7 @@ namespaces:
       - secretName: accurx-metrics-certificate
         heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-1234
 ```
+
+## Debugging cronjob process
+`kubectl get pods -n <namespace> | grep "tls-certificate-heartbeat"`
+`kubectl logs -n <namespace> <pod>`
