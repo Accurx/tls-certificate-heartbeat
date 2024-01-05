@@ -34,3 +34,18 @@ helm upgrade -n cronjobs [RELEASE_NAME] tls-certificate-heartbeat
 | schedule | cron formatted schedule, of how frequently to run the heartbeat & validated the certificate expiry | `*/15 * * * *` |
 | namespaces.\<namespace\>.certificates | List of each certificate to check and in which cluster namespace these reside. | ``` - secretName: <secret name on the cluster>        heartBeatUrl: <external HTTP url to ping>``` |
 
+## Example values file:
+```
+schedule: "*/10 * * * *"  # every 10m
+namespaces:
+  default:
+    certificates:
+      - secretName: accurx-certificate
+        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-1234
+      - secretName: wildcard-accurx-certificate
+        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-5678
+  metrics:
+    certificates:
+      - secretName: accurx-metrics-certificate
+        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-1234
+```
