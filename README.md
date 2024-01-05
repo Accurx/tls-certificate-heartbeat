@@ -32,11 +32,13 @@ helm upgrade -n cronjobs [RELEASE_NAME] tls-certificate-heartbeat
 | Parameter                          | Description                                                                                                                       | Default                                                 |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
 | schedule | cron formatted schedule, of how frequently to run the heartbeat & validated the certificate expiry | `*/15 * * * *` |
+| expiryThresholdSeconds | If the target certificate will expire within the specified timeframe, the heartbeat will not be sent! This allows for visibility on a soon to expire certificate on the cluster. | `604800` |
 | namespaces.\<namespace\>.certificates | List of each certificate to check and in which cluster namespace these reside. | ``` - secretName: <secret name on the cluster>        heartBeatUrl: <external HTTP url to ping>``` |
 
 ## Example values file:
 ```
 schedule: "*/10 * * * *"  # every 10m
+expiryThresholdSeconds: 604800  # 7 days
 namespaces:
   default:
     certificates:
