@@ -54,4 +54,5 @@ namespaces:
 
 ## Debugging cronjob process
 `kubectl get pods -n <namespace> | grep "tls-certificate-heartbeat"`
+
 `kubectl logs -n <namespace> <pod>`
