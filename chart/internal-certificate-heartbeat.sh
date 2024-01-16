@@ -6,8 +6,8 @@ for arg in "${cert_array[@]}"; do
   IFS=: read cert_name heartbeat_url <<< "$arg"
   set -x;
   kubectl get secret "$cert_name" --namespace default -o "jsonpath={.data['tls\.crt']}" | base64 -d | openssl x509 --checkend $expire_threshold_s -noout
-  set +x;
   result=$?
+  set +x;
   if [ $result -ne 0 ]; then
     printf "Certificate '%s' will expire within %s seconds" "$cert_name" "$expire_threshold_s";
   else
