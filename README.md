@@ -43,13 +43,13 @@ namespaces:
   default:
     certificates:
       - secretName: accurx-certificate
-        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-1234
+        heartBeatUrl: https://accurx.com/heartbeat/ACCURX-1234
       - secretName: wildcard-accurx-certificate
-        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-5678
+        heartBeatUrl: https://accurx.com/heartbeat/ACCURX-5678
   metrics:
     certificates:
       - secretName: accurx-metrics-certificate
-        heartBeatUrl: https://metrics.uptime.com/metrics/heartbeat/ACCURX-1234
+        heartBeatUrl: https://accurx.com/heartbeat/ACCURX-1234
 ```
 
 ## Debugging cronjob process
