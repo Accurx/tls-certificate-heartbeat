@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  tls-certificate-heartbeat:
+  - apiVersion: v2
+    created: "2024-01-16T14:10:40.290076Z"
+    description: Chart to provide a cronjob that will regularly ping an external URL
+      with a cluster certificate expiry notification
+    digest: a75dcdff3a51c51f0b5d27bab5e3265032a771908480cd6f2144a8a8794fea56
+    maintainers:
+    - email: mitchell@accurx.com
+      name: Mitchell Homer
+    name: tls-certificate-heartbeat
+    urls:
+    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-01-16T14:10:40.289024Z"
