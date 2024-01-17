@@ -74,6 +74,12 @@ helm install -f values.yaml tls-certificate-heartbeat . -n cronjobs
 
 ## Publishiing a new version:
 
+Bump the version number in chart/Chart.yaml to an appropriate semantic version based on changes.
+
+Package a new vesrion of the chart.
 `helm package chart/`
 
-Then add the built .tgz file to github 
+Add the built .tgz file to github 
+
+Generate a new index to point to the new release with:
+`helm repo index --url https://accurx.github.io/tls-certificate-heartbeat .`
