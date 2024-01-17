@@ -1,4 +1,4 @@
-# Accurx - tls-certificate-heartbeat Helm Chart
+:# Accurx - tls-certificate-heartbeat Helm Chart
 
 ## Get Repo
 
@@ -56,3 +56,24 @@ namespaces:
 `kubectl get pods -n <namespace> | grep "tls-certificate-heartbeat"`
 
 `kubectl logs -n <namespace> <pod>`
+
+
+## Testing locally:
+
+Ensure docker is running:
+`docker ps`
+
+Using kind create a new local cluster:
+`kind create cluster`
+
+Run install of chart:
+```
+cd tls-certificate-heartbeat/chart
+helm install -f values.yaml tls-certificate-heartbeat . -n cronjobs
+```
+
+## Publishiing a new version:
+
+`helm package chart/`
+
+Then add the built .tgz file to github 
