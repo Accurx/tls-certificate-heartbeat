@@ -1,7 +1,7 @@
 #!/bin/bash
 expire_threshold_s=$1
 
-cert_array=("${@:1}")
+cert_array=("${@:2}")
 for arg in "${cert_array[@]}"; do
   IFS=: read cert_name heartbeat_url <<< "$arg"
   set -x;
