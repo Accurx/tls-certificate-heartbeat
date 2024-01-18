@@ -1,4 +1,4 @@
-:# Accurx - tls-certificate-heartbeat Helm Chart
+# Accurx - tls-certificate-heartbeat Helm Chart
 
 ## Get Repo
 
@@ -72,14 +72,15 @@ cd tls-certificate-heartbeat/chart
 helm install -f values.yaml tls-certificate-heartbeat . -n cronjobs
 ```
 
-## Publishiing a new version:
+## Publishing a new version:
 
-Bump the version number in chart/Chart.yaml to an appropriate semantic version based on changes.
+1. Bump the version number in chart/Chart.yaml to an appropriate semantic version based on changes.
 
-Package a new vesrion of the chart.
-`helm package chart/`
+2. Package a new version of the chart.
+  `helm package chart/`
 
-Add the built .tgz file to github 
+3. Generate a new index to point to the new release with:
+  `helm repo index --url https://accurx.github.io/tls-certificate-heartbeat .`
 
-Generate a new index to point to the new release with:
-`helm repo index --url https://accurx.github.io/tls-certificate-heartbeat .`
+4. Add the built .tgz & index.html files to github.
+
