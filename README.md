@@ -1,5 +1,28 @@
 # Accurx - tls-certificate-heartbeat Helm Chart
 
+## Use as a sub-chart (dependency)
+
+Example requirements.yaml:
+```yaml
+dependencies:
+  - name: 'tls-certificate-heartbeat' 
+    version: 0.1.1
+    repository: https://accurx.github.io/tls-certificate-heartbeat
+```
+Example values.yaml config:
+```yaml
+tls-certificate-heartbeat:
+  schedule: "*/10 * * * *"  # every 10m
+  expiryThresholdSeconds: 604800  # 7 days
+  namespaces:
+    default:
+      certificates:
+        - secretName: accurx-certificate
+          heartBeatUrl: https://accurx.com/heartbeat/ACCURX-1234
+        - secretName: wildcard-accurx-certificate
+          heartBeatUrl: https://accurx.com/heartbeat/ACCURX-5678
+```
+
 ## Get Repo
 
 ```console
