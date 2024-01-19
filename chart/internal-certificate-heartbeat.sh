@@ -2,12 +2,15 @@
 expire_threshold_s=$1
 secret_name=$2
 heartbeat_url=$3
-secret_jsonpath="${4:.data['tls/.crt']}"
+secret_jsonpath="${4:-.data['tls\.crt']}"
 
-set -x;
-kubectl get secret "$secret_name" --namespace default -o "jsonpath={$secret_jsonpath}" | base64 -d | openssl x509 --checkend $expire_threshold_s -noout
-set +x;
+set -e;
+echo "Running 'kubectl get secret \"$secret_name\" --namespace default -o \"jsonpath={$secret_jsonpath}\"'"
+raw_cert=$(kubectl get secret "$secret_name" --namespace default -o "jsonpath={$secret_jsonpath}")
+decoded_cert=$(echo "$raw_cert" | base64 -d)
+set +e;
 
+echo "$decoded_cert" | openssl x509 --checkend $expire_threshold_s -noout
 result=$?
 if [ $result -ne 0 ]; then
     printf "Certificate '%s' will expire within %s seconds" "$secret_name" "$expire_threshold_s";
