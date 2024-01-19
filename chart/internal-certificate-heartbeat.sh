@@ -2,9 +2,10 @@
 expire_threshold_s=$1
 secret_name=$2
 heartbeat_url=$3
+secret_jsonpath="${4:.data['tls/.crt']}"
 
 set -x;
-kubectl get secret "$secret_name" --namespace default -o "jsonpath={.data['tls\.crt']}" | base64 -d | openssl x509 --checkend $expire_threshold_s -noout
+kubectl get secret "$secret_name" --namespace default -o "jsonpath={$secret_jsonpath}" | base64 -d | openssl x509 --checkend $expire_threshold_s -noout
 set +x;
 
 result=$?
