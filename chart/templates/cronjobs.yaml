@@ -1,17 +1,6 @@
 {{- $expireThresholdSeconds := 604800 }}
 {{- $heartbeatCronJobImage := "bitnami/kubectl:1.25.2-debian-11-r3" }}
 {{- $schedule := .Values.schedule }}
-{{- $certificateArgs := list }}
-{{- range $namespace, $value := .Values.namespaces }}
-  {{- range $certficate := $value.certificates }}
-    {{- if $certficate.heartBeatUrl }}
-      {{- $argString := printf "%s:%s" $certficate.secretName $certficate.heartBeatUrl }}
-      {{- $certificateArgs = append $certificateArgs $argString }}
-    {{- end }}
-  {{- end }}
-{{- end }}
-
-{{- if $certificateArgs }}
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -36,10 +25,16 @@ spec:
           containers:
             - name: {{.Values.name}}
               image: {{ $heartbeatCronJobImage }}
-              command:
-              - "/bin/bash"
-              - "-c"
-              - "/certificates_configmap/internal-certificate-heartbeat.sh {{ $expireThresholdSeconds }} {{ join " " $certificateArgs }}"
+              command: [ "/bin/bash", "-c" ]
+              args:
+              - > 
+              {{- range $namespace, $value := .Values.namespaces }}
+                {{- range $certificate := $value.certificates }}
+                  {{- if $certificate.heartBeatUrl }}
+                /certificates_configmap/internal-certificate-heartbeat.sh {{ $expireThresholdSeconds }} {{ $certificate.secretName }} {{ $certificate.heartBeatUrl }} "{{ ternary $certificate.secretDataKey "" (hasKey $certificate "secretDataKey") }}" || true;
+                  {{- end }}
+                {{- end }}
+              {{- end }}
               volumeMounts:
                 - name: configmap
                   mountPath: /certificates_configmap
@@ -50,5 +45,4 @@ spec:
                 name: internal-certificate-heartbeat
                 defaultMode: 0777
           restartPolicy: OnFailure
-{{- end }}
 

@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Chart to provide a cronjob that will regularly ping an external URL with a cluster certificate expiry notification
 name: tls-certificate-heartbeat
-version: 0.1.1
+version: 0.2.0
 maintainers:
   - name: Mitchell Homer
     email: mitchell@accurx.com
