@@ -15,4 +15,8 @@ namespaces:
     certificates:
     - secretName: accurx-certificate
       heartBeatUrl: https://accurx.com/heartbeat/1234
+    - secretName: wildcard-accurx-certificate
+      heartBeatUrl: https://accurx.com/heartbeat/ACCURX-5678
+      secretJsonpath: ".data['ca-cert\\.pem']"
+
 #namespaces: []
