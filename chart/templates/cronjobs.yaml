@@ -1,4 +1,4 @@
-{{- $expireThresholdSeconds := 604800 }}
+{{- $defaultExpiryThresholdSeconds := .Values.defaultExpiryThresholdSeconds | default 604800 }}
 {{- $heartbeatCronJobImage := "bitnami/kubectl:1.25.2-debian-11-r3" }}
 {{- $schedule := .Values.schedule }}
 ---
@@ -31,7 +31,7 @@ spec:
               {{- range $namespace, $value := .Values.namespaces }}
                 {{- range $certificate := $value.certificates }}
                   {{- if $certificate.heartBeatUrl }}
-                /certificates_configmap/internal-certificate-heartbeat.sh {{ $expireThresholdSeconds }} {{ $namespace }} {{ $certificate.secretName }} {{ $certificate.heartBeatUrl }} "{{ ternary $certificate.secretDataKey "" (hasKey $certificate "secretDataKey") }}" || true;
+                /certificates_configmap/internal-certificate-heartbeat.sh {{ ternary $certificate.expiryThresholdSeconds $defaultExpiryThresholdSeconds (hasKey $certificate "expiryThresholdSeconds") }} {{ $namespace }} {{ $certificate.secretName }} {{ $certificate.heartBeatUrl }} "{{ ternary $certificate.secretDataKey "" (hasKey $certificate "secretDataKey") }}" || true;
                   {{- end }}
                 {{- end }}
               {{- end }}

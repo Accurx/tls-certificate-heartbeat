@@ -7,7 +7,7 @@ role:
 
 schedule: "*/15 * * * *"  # every 15 minutes
 
-expiryThresholdSeconds: 604800  # 7 days
+defaultExpiryThresholdSeconds: 604800  # 7 days
 
 # object to contain info on which cluster certificates to check, with following format
 namespaces:
@@ -18,10 +18,9 @@ namespaces:
     - secretName: wildcard-accurx-certificate
       heartBeatUrl: https://accurx.com/heartbeat/ACCURX-5678
       secretDataKey: "ca-cert.pem"
+      expiryThresholdSeconds: 86400
   metrics:
     certificates:
     - secretName: accurx-certificate
       heartBeatUrl: https://accurx.com/heartbeat/1234
 
-
-#namespaces: []
