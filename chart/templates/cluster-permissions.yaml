@@ -1,35 +1,36 @@
-{{- if .Values.role }}
+{{- range $namespace, $value := .Values.namespaces }}
+{{- if $.Values.role }}
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{.Values.name}}-cron-role"
-  namespace: default
+  name: "{{$.Values.name}}-cron-role"
+  namespace: {{ $namespace }}
 rules:
-  - apiGroups: {{.Values.role.apiGroups | toJson}}
-    resources: {{.Values.role.resources | toJson}}
-    verbs: {{.Values.role.verbs | toJson}}
+  - apiGroups: {{$.Values.role.apiGroups | toJson}}
+    resources: {{$.Values.role.resources | toJson}}
+    verbs: {{$.Values.role.verbs | toJson}}
 
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{.Values.name}}-cron-binding"
-  namespace: default
+  name: "{{$.Values.name}}-cron-binding"
+  namespace: {{ $namespace }}
 subjects:
   - kind: ServiceAccount
-    name: "{{.Values.name}}-cron-sa"
+    name: "{{$.Values.name}}-cron-sa"
     namespace: cronjobs
     apiGroup: ""
 roleRef:
   kind: Role
-  name: "{{.Values.name}}-cron-role"
+  name: "{{$.Values.name}}-cron-role"
   apiGroup: rbac.authorization.k8s.io
-
+{{- end }}
+{{- end }}
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: "{{.Values.name}}-cron-sa"
+  name: "{{$.Values.name}}-cron-sa"
   namespace: cronjobs
-{{- end }}
