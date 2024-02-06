@@ -11,7 +11,7 @@ entries:
       name: Mitchell Homer
     name: tls-certificate-heartbeat
     urls:
-    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.2.2.tgz
+    - https://github.com/Accurx/tls-certificate-heartbeat/releases/download/tls-certificate-heartbeat-0.2.2/tls-certificate-heartbeat-0.2.2.tgz
     version: 0.2.2
   - apiVersion: v2
     created: "2024-02-02T14:42:08.062753Z"
@@ -23,7 +23,7 @@ entries:
       name: Mitchell Homer
     name: tls-certificate-heartbeat
     urls:
-    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.2.1.tgz
+    - https://github.com/Accurx/tls-certificate-heartbeat/releases/download/tls-certificate-heartbeat-0.2.1/tls-certificate-heartbeat-0.2.1.tgz
     version: 0.2.1
   - apiVersion: v2
     created: "2024-02-02T14:42:08.062251Z"
@@ -35,7 +35,7 @@ entries:
       name: Mitchell Homer
     name: tls-certificate-heartbeat
     urls:
-    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.2.0.tgz
+    - https://github.com/Accurx/tls-certificate-heartbeat/releases/download/tls-certificate-heartbeat-0.2.0/tls-certificate-heartbeat-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
     created: "2024-02-02T14:42:08.061662Z"
@@ -47,7 +47,7 @@ entries:
       name: Mitchell Homer
     name: tls-certificate-heartbeat
     urls:
-    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.1.1.tgz
+    - https://github.com/Accurx/tls-certificate-heartbeat/releases/download/tls-certificate-heartbeat-0.1.1/tls-certificate-heartbeat-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
     created: "2024-02-02T14:42:08.061031Z"
@@ -59,6 +59,6 @@ entries:
       name: Mitchell Homer
     name: tls-certificate-heartbeat
     urls:
-    - https://accurx.github.io/tls-certificate-heartbeat/tls-certificate-heartbeat-0.1.0.tgz
+    - https://github.com/Accurx/tls-certificate-heartbeat/releases/download/tls-certificate-heartbeat-0.1.0/tls-certificate-heartbeat-0.1.0.tgz
     version: 0.1.0
 generated: "2024-02-02T14:42:08.059736Z"
