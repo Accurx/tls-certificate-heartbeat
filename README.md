@@ -104,18 +104,22 @@ https://github.com/helm/chart-releaser
 Create a PAT:
 https://github.com/settings/tokens
 
-1. Bump the version number in chart/Chart.yaml to an appropriate semantic version based on changes.
+1. Bump the version number in `chart/Chart.yaml` to an appropriate semantic version based on changes.
 
 2. Package a new version of the chart.
   `helm package chart/`
 
 3. Upload the package to the remote github repo with chart-releaser:
-  `export CR_TOKEN="123456789"`
-  `cr upload --config cr-config.yaml`
+  ```
+  export CR_TOKEN="123456789"
+  cr upload --config cr-config.yaml
+  ```
 
 4. Update the index.yaml file with chart-releaser:
-  `export CR_TOKEN="123456789"`
-  `cr index --config cr-config.yaml`
+  ```
+  export CR_TOKEN="123456789"
+  cr index --config cr-config.yaml`
+  ```
 
-5. Add the Chart.yaml and index.yaml diff'ed files to github 'trunk' branch.
+5. Add the `chart/Chart.yaml` and `index.yaml` modified files to github 'trunk' branch.
 
