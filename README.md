@@ -98,13 +98,24 @@ helm install -f values.yaml tls-certificate-heartbeat . -n cronjobs
 
 ## Publishing a new version:
 
+Download Chart-releaser
+https://github.com/helm/chart-releaser
+
+Create a PAT:
+https://github.com/settings/tokens
+
 1. Bump the version number in chart/Chart.yaml to an appropriate semantic version based on changes.
 
 2. Package a new version of the chart.
   `helm package chart/`
 
-3. Generate a new index to point to the new release with:
-  `helm repo index --url https://accurx.github.io/tls-certificate-heartbeat .`
+3. Upload the package to the remote github repo with chart-releaser:
+  `export CR_TOKEN="123456789"`
+  `cr upload --config cr-config.yaml`
 
-4. Add the built .tgz & index.html files to github.
+4. Update the index.yaml file with chart-releaser:
+  `export CR_TOKEN="123456789"`
+  `cr index --config cr-config.yaml`
+
+5. Add the Chart.yaml and index.yaml diff'ed files to github 'trunk' branch.
 

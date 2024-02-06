@@ -1,0 +1,7 @@
+owner: Accurx
+git-repo: tls-certificate-heartbeat
+package-path: .
+#token: <Github PAT> can be provided with "export CR_TOKEN=<>"
+index-path: ./index.yaml
+pages-index-path: ./index.yaml
+pages-branch: trunk
