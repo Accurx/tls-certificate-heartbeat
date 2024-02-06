@@ -6,7 +6,7 @@ Example requirements.yaml:
 ```yaml
 dependencies:
   - name: 'tls-certificate-heartbeat' 
-    version: 0.2.2
+    version: 0.3.0
     repository: https://accurx.github.io/tls-certificate-heartbeat
 ```
 Example values.yaml config:
