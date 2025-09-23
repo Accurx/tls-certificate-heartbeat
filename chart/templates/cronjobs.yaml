@@ -1,5 +1,5 @@
 {{- $defaultExpiryThresholdSeconds := .Values.defaultExpiryThresholdSeconds | default 604800 }}
-{{- $heartbeatCronJobImage := "bitnami/kubectl:1.25.2-debian-11-r3" }}
+{{- $heartbeatCronJobImage := "bitnamisecure/kubectl:latest" }}
 {{- $schedule := .Values.schedule }}
 ---
 apiVersion: batch/v1
